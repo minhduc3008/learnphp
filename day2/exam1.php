@@ -32,6 +32,21 @@
             margin: 10px 0px 0px 100px;
             cursor: pointer;
         }
+        div.result {
+            border: 1px solid #ccc;
+            width: 500px;
+            text-align: center;
+            margin: 50px auto;
+        }
+        form {
+            border: 1px solid #ccc;
+            width: 500px;
+            padding: 10px;
+            margin: 0 auto;
+        }
+        div.btn {
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -47,12 +62,13 @@
         $phone = $_POST['phone'];
         $address = $_POST['address'];
         $password = $_POST['password'];
+        $gender = $_POST['gender'];
 
         // Validate for fullname
         if(empty($fullname)) {
             $fullnameErr = 'Vui lòng nhập họ và tên';
-        } else if(strlen($_POST['fullname']) < 5) {
-            $fullnameErr = 'Họ và tên không được dưới 5 ký tự';
+        } else if(strlen($_POST['fullname']) < 3) {
+            $fullnameErr = 'Họ và tên không được dưới 3 ký tự';
         }
 
         // Validate for email
@@ -86,9 +102,11 @@
         }
 
         // Validate for gender
-        if (empty($_POST['gender'])) {
+        if (empty($gender)) {
             $genderErr = 'Vui lòng chọn giới tính của bạn';
-        } 
+        } else {
+            // Xử lý logic khi radio button được chọn
+        }
 
 
         // Xử lý sau khi nhập đúng và đủ
@@ -96,10 +114,16 @@
            $content .= "<p>Tên của bạn: ${fullname}";
            $content .= "<p>Email của bạn: ${email}";
            $content .= "<p>Phone của bạn: ${phone}";
+           $content .= "<p>Password của bạn: ${password}";
            $content .= "<p>Address của bạn: ${address}";
            $content .= "<p>Giới tính của bạn: ${gender}";
 
         }
+    }
+
+    if (isset($_POST['btnReset'])) {
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit();
     }
 ?>
     <form action="" method="post">
@@ -130,14 +154,16 @@
         <br>
 
         <label for="gender">Gender</label>
-        
-            <input type="radio" name="gender" id="gender" value="1">Nam
-            <input type="radio" name="gender" id="gender" value="2">Nữ
-            <input type="radio" name="gender" id="gender" value="3">Khác
-            <?= $genderErr ? "<div class='smg-error'>{$genderErr}</div>" : '' ?>
-        
+        <input type="radio" id="male" name="gender" value="Nam" <?= $gender === 'Nam' ? 'checked' : '' ?>>Nam
+        <input type="radio" id="female" name="gender" value="Nữ" <?= $gender === 'Nữ' ? 'checked' : '' ?>>Nữ
+        <input type="radio" id="other" name="gender" value="Khác" <?= $gender === 'Khác' ? 'checked' : '' ?>> Khác
+        <?= $genderErr ? "<div class='smg-error'>$genderErr</div>" : '' ?>
 
-        <button name="btnRegister">Register</button>
+        <div class="btn">
+            <button name="btnRegister">Register</button>
+            <button name="btnReset" type="reset">Reset</button>
+        </div>
+        
     </form>
     <div class='result'><?= $content ?></div>
 </body>
