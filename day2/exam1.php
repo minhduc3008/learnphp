@@ -86,13 +86,9 @@
         }
 
         // Validate for gender
-if (empty($gender)) {
-    $genderErr = 'Vui lòng chọn giới tính của bạn';
-} else if ($gender === "1" || $gender === "2" || $gender === "3") {
-    $genderErr = '';
-} else {
-    $genderErr = 'Giới tính không hợp lệ';
-}
+        if (empty($_POST['gender'])) {
+            $genderErr = 'Vui lòng chọn giới tính của bạn';
+        } 
 
 
         // Xử lý sau khi nhập đúng và đủ
@@ -134,11 +130,12 @@ if (empty($gender)) {
         <br>
 
         <label for="gender">Gender</label>
-        <div class="gender">
-            <input type="radio" id="male" name="gender" value="<?= $gender ? 'Nam' : 'Nữ' ?>">Nam
-            <input type="radio" id="famale" name="gender" value="<?= $gender ? 'Nữ' : 'Nam' ?>">Nữ
+        
+            <input type="radio" name="gender" id="gender" value="1">Nam
+            <input type="radio" name="gender" id="gender" value="2">Nữ
+            <input type="radio" name="gender" id="gender" value="3">Khác
             <?= $genderErr ? "<div class='smg-error'>{$genderErr}</div>" : '' ?>
-        </div>
+        
 
         <button name="btnRegister">Register</button>
     </form>
