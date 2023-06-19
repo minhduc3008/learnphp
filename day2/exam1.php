@@ -161,7 +161,7 @@
 
         <div class="btn">
             <button name="btnRegister">Register</button>
-            <button name="btnReset" type="reset">Reset</button>
+            <button name="btnReset" type="submit">Reset</button>
         </div>
         
     </form>
