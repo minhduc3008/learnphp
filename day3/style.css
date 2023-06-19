@@ -12,6 +12,15 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.input-error {
+  border: 1px solid red !important;
+}
+
+.smg-error {
+  color: red !important;
+  margin-top: 5px;
+}
 .flex_wrap {
   display: flex;
   justify-content: space-between;
