@@ -4,26 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>ここにタイトル</title>
+    <title>Form</title>
     <!-- <link href="css/reset.css" rel="stylesheet" type="text/css"> -->
     <link href="./style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <?php
-    $organization = $affiliation = $administrator = $zip31 = $zip32 = $address = $phone = $email = $password = '';
-    $organizationErr = $affiliationErr = $administratorErr = $zip31Err = $zip32Err = $addressErr = $phoneErr = $emailErr = $passwordErr = '';
+    $organization = $affiliation = $administrator = $postCodeOne = $postCodeTwo = $address = $phone = $email = $password = $submit = '';
+    $organizationErr = $affiliationErr = $administratorErr = $postCodeOneErr = $postCodeTwoErr = $addressErr = $phoneErr = $emailErr = $passwordErr = '';
     $content = '';
     if (isset($_POST['Submit'])) {
         $organization = $_POST['organization'];
         $affiliation = $_POST['affiliation'];
         $administrator = $_POST['administrator'];
-        $zip31 = $_POST['zip31'];
-        $zip32 = $_POST['zip32'];
+        $postCodeOne = $_POST['postCodeOne'];
+        var_dump($postCodeOne);
+        $postCodeTwo = $_POST['postCodeTwo'];
         $address = $_POST['address'];
         $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
         $email = isset($_POST['email']) ? $_POST['email'] : '';
         $password = $_POST['password'];
+        // $submit = $_POST['submit'];
 
         // Validate for organization
         if (empty($organization)) {
@@ -37,13 +39,13 @@
         if (empty($administrator)) {
             $administratorErr = '管理者名は必ず指定してください。';
         }
-        // Validate for zip31
-        if (empty($zip31)) {
-            $zip31Err = '郵便番号は必ず指定してください。';
+        // Validate for postCodeOne
+        if (empty($postCodeOne)) {
+            $postCodeOneErr = 'nhap lai de';
         }
-        // Validate for zip32
-        if (empty($zip32)) {
-            $zip32Err = '郵便番号は必ず指定してください。';
+        // Validate for postCodeTwo
+        if (empty($postCodeTwo)) {
+            $postCodeTwoErr = '郵便番号は必ず指定してください。';
         }
         // Validate for address
         if (empty($address)) {
@@ -63,6 +65,17 @@
         if (empty($password)) {
             $passwordErr = 'パスワードは必ず指定してください。';
         }
+        // in ra 
+
+        if($organization && $affiliation && $administrator && $address && $phone && $password ) {
+            $content .=" <p>Ognization 's Name: $organization</p>";
+            $content .=" <p>Affiliation 's Name: $affiliation</p>";
+            $content .=" <p>Administrator 's Name: $administrator</p>";
+            $content .=" <p>Your address is: $address</p>";
+            $content .=" <p>Phone: $phone</p>";
+            $content .=" <p>Password: $password</p>";
+        }
+
     }
     ?>
     <header id="header">
@@ -85,13 +98,14 @@
                                 商品引渡し先
                             </div>
                             <label class="side_label">
-                                <input type="radio" name="destination" value="company" checked>会社
+                                 <input type="radio" name="destination" value="company" checked <?= $_POST['destination'] === 'company' ? 'checked' : '' ?>  >会社
+                                
                             </label>
                             <label class="side_label">
-                                <input type="radio" name="destination" value="school">学校
+                                <input type="radio" name="destination" value="school" <?= $_POST['destination'] === 'school' ? 'checked' : '' ?>>学校
                             </label>
                             <label class="side_label">
-                                <input type="radio" name="destination" value="home">自宅
+                                <input type="radio" name="destination" value="home" <?= $_POST['destination'] === 'home' ? 'checked' : '' ?>>自宅
                             </label>
                         </div>
                         <!-- 会社･勤務先フォーム -->
@@ -110,7 +124,7 @@
                                 </div>
                                 <input type="text" name="affiliation" placeholder="営業部"
                                     class="<?= $affiliationErr ? 'input-error' : '' ?>" value="<?= $affiliation ?>">
-                                <?= $affiliationErr ? "<span class='smg-error'>{$affiliationErr}</span>" : '' ?>>
+                                <?= $affiliationErr ? "<span class='smg-error'>{$affiliationErr}</span>" : '' ?>
                             </div>
                             <div class="form_box">
                                 <div class="form_headline">
@@ -118,7 +132,7 @@
                                 </div>
                                 <input type="text" name="administrator" placeholder="山田　太郎"
                                     class="<?= $administratorErr ? 'input-error' : '' ?>" value="<?= $administrator ?>">
-                                <?= $administratorErr ? "<span class='smg-error'>{$administratorErr}</span>" : '' ?>>
+                                <?= $administratorErr ? "<span class='smg-error'>{$administratorErr}</span>" : '' ?>
                             </div>
                             <div class="form_box">
                                 <div class="form_headline">
@@ -126,16 +140,16 @@
                                 </div>
                                 <div class="flex_wrap zip_frame">
                                     <div>
-                                        <input type="text" name="zip31" maxlength="3" placeholder="000"
-                                            class="<?= $zip31Err ? 'input-error' : '' ?>" value="<?= $zip31 ?>">
-                                        <?= $zip31Err ? "<span class='smg-error'>{$zip31Err}</span>" : '' ?>>
+                                        <input type="text" name="postCodeOne" maxlength="3" placeholder="000"
+                                            class="<?= $postCodeOneErr ? 'input-error' : '' ?>" value="<?= $postCodeOne ?>">
+                                        <?= $postCodeOneErr ? "<span class='smg-error'>$postCodeOneErr</span>" : '' ?>
                                     </div>
                                     <div>
-                                        <input type="text" name="zip32" maxlength="4"
-                                            onKeyUp="AjaxZip3.zip2addr('zip31','zip32','pref','pref','addr1');"
-                                            placeholder="0000" class="<?= $zip32Err ? 'input-error' : '' ?>"
-                                            value="<?= $zip32 ?>">
-                                        <?= $zip32Err ? "<span class='smg-error'>{$zip32Err}</span>" : '' ?>>>
+                                        <input type="text" name="postCodeTwo" maxlength="4"
+                                            onKeyUp="AjaxZip3.postCodeTwoaddr('postCodeOne','postCodeTwo','pref','pref','addr1');"
+                                            placeholder="0000" class="<?= $postCodeTwoErr ? 'input-error' : '' ?>"
+                                            value="<?= $postCodeTwo ?>">
+                                        <?= $postCodeTwoErr ? "<span class='smg-error'>$postCodeTwoErr</span>" : '' ?>
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +160,7 @@
                                 <div class="pref"></div>
                                 <input type="text" name="address" placeholder="〇〇町1-1　〇〇マンション301"
                                     class="<?= $addressErr ? 'input-error' : '' ?>" value="<?= $address ?>">
-                                <?= $addressErr ? "<span class='smg-error'>{$addressErr}</span>" : '' ?>>>>
+                                <?= $addressErr ? "<span class='smg-error'>{$addressErr}</span>" : '' ?>
                             </div>
                             <div class="form_box">
                                 <div class="form_headline">
@@ -154,7 +168,7 @@
                                 </div>
                                 <input type="text" name="phone" placeholder="000-0000-0000"
                                     class="<?= $phoneErr ? 'input-error' : '' ?>" value="<?= $phone ?>">
-                                <?= $phoneErr ? "<span class='smg-error'>{$phoneErr}</span>" : '' ?>>>>
+                                <?= $phoneErr ? "<span class='smg-error'>{$phoneErr}</span>" : '' ?>
                             </div>
                             <div class="form_box">
                                 <div class="form_headline">
@@ -162,7 +176,7 @@
                                 </div>
                                 <input type="email" name="email$email" placeholder="example@example.com"
                                     class="<?= $emailErr ? 'input-error' : '' ?>" value="<?= $email ?>">
-                                <?= $emailErr ? "<span class='smg-error'>{$emailErr}</span>" : '' ?>>>>
+                                <?= $emailErr ? "<span class='smg-error'>{$emailErr}</span>" : '' ?>
                             </div>
                             <div class="form_box">
                                 <div class="form_headline">
@@ -170,7 +184,7 @@
                                 </div>
                                 <input type="text" name="password" placeholder="※半角英数字１５文字以内"
                                     class="<?= $passwordErr ? 'input-error' : '' ?>" value="<?= $password ?>">
-                                <?= $passwordErr ? "<span class='smg-error'>{$passwordErr}</span>" : '' ?>>>>
+                                <?= $passwordErr ? "<span class='smg-error'>{$passwordErr}</span>" : '' ?>
                             </div>
                         </div>
                         <!-- 学校フォーム -->
@@ -199,11 +213,11 @@
                                 </div>
                                 <div class="flex_wrap zip_frame">
                                     <div>
-                                        <input type="text" name="zip31" maxlength="3" placeholder="000">
+                                        <input type="text" name="postCodeOne" maxlength="3" placeholder="000">
                                     </div>
                                     <div>
-                                        <input type="text" name="zip32" maxlength="4"
-                                            onKeyUp="AjaxZip3.zip2addr('zip31','zip32','pref','pref','addr1');"
+                                        <input type="text" name="postCodeTwo" maxlength="4"
+                                            onKeyUp="AjaxZip3.postCodeTwoaddr('postCodeOne','postCodeTwo','pref','pref','addr1');"
                                             placeholder="0000">
                                     </div>
                                 </div>
@@ -247,6 +261,8 @@
                 </div>
             </section>
         </form>
+        <div class="content"><?= $content?></div>
+
     </main>
     <footer id="footer">
     </footer>
