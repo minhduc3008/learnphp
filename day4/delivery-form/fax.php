@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form giao hàng</title>
+    <title>Fax Delivery Form</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -52,7 +52,7 @@
     <div class="container">
         <div class="list-product">
         <ul> 
-            <li>Danh mục sản phẩm</li>
+            <li><a href="index.php">Danh mục sản phẩm</a></li>
             <li><a href="laptop.php">Laptop</a></li>
             <li><a href="printer.php">Printer</a></li>
             <li><a href="mobile.php">Mobile</a></li>
