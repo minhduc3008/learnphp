@@ -11,14 +11,7 @@
     display: flex;
     background-color: #cfe2f3;
     margin: 30px auto;
-    position: relative;
 } 
-
-span {
-    position: absolute;
-    top: 17px;
-    left: 158px;
-}
 
 .list-product {
     border: 1px solid #333;
@@ -43,6 +36,10 @@ ul li a {
 form {
     border: 1px solid #333;
     width: 650px;
+}
+span {
+    text-align: center;
+    margin-top: 10px;
 }
 
 .product-item {
