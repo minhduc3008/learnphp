@@ -41,7 +41,7 @@
 
         // Sau khi nhập đúng và đủ
 
-        if($fullname && $phone && $address) {
+        if($fullname && $phone && $address && strlen($phone) === 10) {
             $content .= "<p>Họ và tên: $fullname</p>";
             $content .= "<p>Số điện thoại: $phone</p>";
             $content .= "<p>Địa chỉ: $address</p>";
