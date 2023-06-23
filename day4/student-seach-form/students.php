@@ -56,5 +56,21 @@ $students = [
         'gender' => 2,
         // 1: nam, 2: nữ
     ],
+    [
+        'id' => 8,
+        'name' => 'Barack Obama',
+        'email' => 'obama@gmail.com',
+        'address' => 'USA',
+        'gender' => 1,
+        // 1: nam, 2: nữ
+    ],
+    [
+        'id' => 9,
+        'name' => 'Vũ Minh Đức',
+        'email' => 'vuminhduc3008@gmail.com',
+        'address' => 'Vĩnh Phúc',
+        'gender' => 1,
+        // 1: nam, 2: nữ
+    ],
 ];
 ?>
