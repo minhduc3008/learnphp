@@ -2,6 +2,8 @@
 require_once("students.php");
 
 $studentId = $_GET['id'] ?? null;
+$gender = $_GET['gender'] ?? null;
+$keyword = $_GET['keyword'] ?? null;
 
 if (empty($studentId)) {
     echo '<p>Không tìm thấy sinh viên</div>';
@@ -28,5 +30,5 @@ if (empty($studentId)) {
 
 
 // if()
-echo "<p><a href='index.php?keyword="  . "&gender=" . urlencode($studentInfo['gender']) . "'>Quay lại danh sách</a></p>";
+echo '<p><a href="index.php?keyword=' . $keyword . '&gender=' . $gender . '">Quay lại danh sách</a></p>';
 ?>

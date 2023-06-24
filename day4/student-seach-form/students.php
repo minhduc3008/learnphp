@@ -72,5 +72,13 @@ $students = [
         'gender' => 1,
         // 1: nam, 2: nữ
     ],
+    [
+        'id' => 10,
+        'name' => 'Nguyễn Thị X',
+        'email' => 'xxx@gmail.com',
+        'address' => 'Vĩnh Phúc',
+        'gender' => 2,
+        // 1: nam, 2: nữ
+    ],
 ];
 ?>

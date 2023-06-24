@@ -6,14 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Search Form</title>
     <style>
+        body {
+            background-color: #00CCCC;
+        }
         .container {
-            margin: 0 auto;
+            margin: 50px auto;
             width: 800px;
+            border: 5px double  #333;
+            background-color: white;
         }
 
         input[type='text'] {
             padding: 10px;
             width: 300px;
+            margin-left: 10px;
+        }
+
+        .gender {
+            cursor: pointer;
         }
 
         button {
@@ -47,6 +57,7 @@
     $gender = $_GET['gender'] ?? null;
     $keyword = $_GET['keyword'] ?? null;
     $result = $students;
+
 
     if (!empty($_GET)) {
         if (!empty($gender) || !empty($keyword)) {
@@ -89,18 +100,19 @@
     ?>
 
     <div class="container">
+        <h1>Form tìm kiếm sinh viên</h1>
         <div class="form-search">
             <form action="" method="GET">
                 <input type="text" name="keyword" size="70" placeholder="Tìm theo tên, email hoặc địa chỉ"
                     value="<?= $keyword ?>" />
-                <label><input type="radio" name="gender" value="1" <?= $gender == 1 ? 'checked' : '' ?> />Nam</label>
-                <label><input type="radio" name="gender" value="2" <?= $gender == 2 ? 'checked' : '' ?> />Nữ</label>
+                <label class="gender"><input type="radio" name="gender" value="1" <?= $gender == 1 ? 'checked' : '' ?> />Nam</label>
+                <label class="gender"><input type="radio" name="gender" value="2" <?= $gender == 2 ? 'checked' : '' ?> />Nữ</label>
                 <button>Tìm kiếm</button>
             </form>
         </div>
 
         <div class="total-result" style="text-align: right; width: 800px;">Tổng số sinh viên:
-            <?= count($result) ?>.
+            <?= count($result) ?>
         </div>
         <table width="800" border="1" cellspacing="0" cellpadding="0">
             <tr>
@@ -130,7 +142,10 @@
                         <?= $student['address'] ?>
                     </td>
                     <td>
-                        <a href="detail-student.php?id=<?= $student['id'] ?>">Xem chi tiết</a>
+                        <?php
+                        $detailLink = 'detail-student.php?id=' . $student['id'] . '&keyword=' . $keyword . '&gender=' . $gender;
+                        ?>
+                        <a href="<?= $detailLink ?>">Xem chi tiết</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
