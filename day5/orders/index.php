@@ -9,29 +9,29 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Product name</th>
+            <th scope="col">Order name</th>
             <th scope="col">Price</th>
             <th scope="col">Handle</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+        <tr>
             <th scope="row">1</th>
             <td>Mark</td>
             <td>Otto</td>
-            <td>@mdo</td>
+            <td><a href="index.php?module=user&action=edit">Edit</a></td>
           </tr>
           <tr>
             <th scope="row">2</th>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>@fat</td>
+            <td><a href="index.php?module=user&action=edit">Edit</a></td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td><a href="index.php?module=order&action=edit">Edit</a></td>
-            <td><a href="index.php?module=order&action=edit">Edit</a></td>
-            <td><a href="index.php?module=order&action=edit">Edit</a></td>
+            <td>Minh</td>
+            <td>Đức</td>
+            <td><a href="index.php?module=user&action=edit">Edit</a></td>
           </tr>
         </tbody>
       </table>
