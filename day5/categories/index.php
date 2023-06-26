@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h2 class="display-4">Category Management</h2>
     <p><a href="./index.php?module=category&action=create">Add new</a></p>
@@ -45,5 +37,3 @@
       </table>
     </div>
   </div>-
-</body>
-</html>
