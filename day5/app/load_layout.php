@@ -3,6 +3,15 @@
 $pageName = $_GET['module'] ?? null;
 $actionName = $_GET['action'] ?? null;
 
+// Nếu module khác auth và session user rỗng thì chuyển đến trang login
+if ($pageName != 'auth' && empty($_SESSION['user'])) {
+    header('location:index.php?module=auth&action=login');
+}
+
+// nếu action là login và đã có session user thì chuyển đến trang chủ (product)
+if ($actionName === 'login' && !empty($_SESSION['user'])) {
+    header('location:index.php?module=product');
+}
 switch ($pageName) {
     case 'product': {
             switch ($actionName) {
@@ -64,5 +73,15 @@ switch ($pageName) {
             }
         }
         break;
-    default;
+    case 'auth':
+        if ($actionName == 'login') {
+            require './auth/login_progess.php';
+            require './auth/login.php';
+        }
+
+        if ($actionName == 'logout') {
+            require './auth/logout.php';
+        }
+
+        break;
 }
