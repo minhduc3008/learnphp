@@ -2,7 +2,7 @@
     <h5 class="my-0 mr-md-auto font-weight-normal">Admin managerment</h5>
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 text-dark" href="./index.php?module=product">Product management</a>
-      <a class="p-2 text-dark" href="./index.php?module=category">Category management</a>
+      <a class="p-2 text-dark" href="./index.php?module=upload">Upload file</a>
       <a class="p-2 text-dark" href="./index.php?module=order">Order management</a>
       <a class="p-2 text-dark" href="./index.php?module=user">User management</a>
       <a class="btn btn-outline-primary"><?= $_SESSION['user']['name'] ?? null ?></a>

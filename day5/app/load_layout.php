@@ -28,21 +28,12 @@ switch ($pageName) {
             }
             break;
         }
-    case 'category': {
-            switch ($actionName) {
-                case 'create': {
-                        require('./categories/create.php');
-                        break;
-                    }
-                case 'edit': {
-                        require('./categories/edit.php');
-                        break;
-                    }
-                default;
-                    require('./categories/index.php');
-            }
-        }
+    case 'upload': {     
+        require('./upload/upload-process.php');
+        require('./upload/index.php');
         break;
+    }
+
     case 'order': {
             switch ($actionName) {
                 case 'create': {
@@ -61,13 +52,19 @@ switch ($pageName) {
     case 'user': {
             switch ($actionName) {
                 case 'create': {
+                        require('./users/user-process.php');
                         require('./users/create.php');
                         break;
                     }
-                case 'edit': {
-                        require('./users/edit.php');
-                        break;
+                case 'edit': {                   
+                    require('./users/user-process.php');
+                    require('./users/edit.php');
+                    break;
                     }
+                case 'delete': {
+                    require('./users/delete.php');
+                    break;
+                }
                 default;
                     require('./users/index.php');
             }
