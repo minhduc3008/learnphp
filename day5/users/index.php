@@ -30,7 +30,7 @@
           <td><?= $user['gender'] == 1 ? "Nam" : "Nữ"?></td>
           <td><?= $user['address']?></td>
           <td>
-            <a href="index.php?module=user&action=edit&id=<?= $user['id']?>">Edit</a>
+            <a href="index.php?module=user&action=edit&id=<?= $user['id']?>">Edit</a> |
             <a onclick="return confirm('Bạn có chắc là muốn xóa ko?')" href="index.php?module=user&action=delete&id=<?= $user['id']?>">Delete</a>
           </td>
         </tr>

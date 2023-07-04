@@ -4,14 +4,14 @@
     }
 </style>
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h3 class="display-5">User Infomation</h3>
+    <h3 class="display-5">User Information</h3>
     <a href="index.php?module=user">Back</a>
 
 </div>
 <div class="container">
     <form action="index.php?module=user&action=create" method="post" enctype="multipart/form-data">
         <div class="form-group row">
-            <label for="fullname" class="col-sm-3 col-form-label">Fullname</label>
+            <label for="fullname" class="col-sm-3 col-form-label">Full name</label>
             <div class="col-sm-9">
                 <input type="text" id="fullname" name="fullname"
                     class="form-control <?= $fullNameErr ? 'border-danger' : '' ?>" value="<?= $fullName ?>"

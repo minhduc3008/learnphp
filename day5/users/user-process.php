@@ -17,7 +17,7 @@
 
         if (empty($fullName)) {
             $fullNameErr = 'Vui lòng điền họ và tên của bạn';
-        }
+        } 
 
         if (empty($email)) {
             $emailErr = 'Vui lòng điền email của bạn';
@@ -25,6 +25,8 @@
         
         if (empty($phone)) {
             $phoneErr = 'Vui lòng điền số điện thoại của bạn';
+        } else if (!is_numeric($phone)) {
+            $phoneErr = 'Số điện thoại phải là số';
         }
 
         if (empty($address)) {
@@ -67,7 +69,7 @@
                 'gender'   => $gender,
                 'file'     => $file,
             ];
-            // Nếu không chọn ảnh mới thì gữi nguyên ảnh hiện tại
+            // Nếu không chọn ảnh mới thì giữ nguyên ảnh hiện tại
             if (empty($file)) {
                 $user['file'] = $_SESSION['users'][$keyOfUser]['file'];
             }
@@ -76,7 +78,8 @@
 
     
         if (empty($_GET['id'])) { // Thêm
-            if($fullName && $email && $phone && $address && $gender) {
+            
+            if($fullName && $email && $phone && $address && $gender && $file) {
                 $users = [
                     'id' => count($_SESSION['users']) + 1,
                     'fullname' => $fullName,
