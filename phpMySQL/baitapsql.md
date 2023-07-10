@@ -56,4 +56,4 @@
 
 15. ### Lấy ra danh sách hộ gia đình và số thành viên tương ứng của hộ gia đình đó:
 
-    SELECT family_name, name FROM families inner join users on families.id = users.family_id;
+    SELECT family_name, COUNT(family_id) AS sothanhvien FROM families LEFT JOIN users ON families.id = users.family_id GROUP BY family_name;
