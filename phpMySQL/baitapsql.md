@@ -16,7 +16,7 @@
 
 5. ### Lấy ra những user có ngày sinh vào ngày 17-10-2000:
 
-    SELECT * FROM users WHERE birthday = '2000-10-17';
+    SELECT * FROM users WHERE DATE(birthday) = '2000-10-17'; // DATE(birthday): chỉ lấy ra ngày của ngày sinh.
 
 6. ### Lấy ra những gia đình có 2 thành viên trở lên:
 
