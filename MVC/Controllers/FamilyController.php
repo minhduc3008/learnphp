@@ -22,7 +22,7 @@ class FamilyController
     {
         view('families.form', [
             'headingTitle' => 'Create a Family',
-            'actionUrl' => 'index.php?controller=family&action=store'
+            'actionUrl'    => 'index.php?controller=family&action=store'
         ]);
     }
 
@@ -67,6 +67,7 @@ class FamilyController
 
     public function update()
     {
+        $inputs = $_POST;
         $familyId = $_GET['id'] ?? 0;
 
         $family = $this->model->findById($_GET['id'] ?? 0);
