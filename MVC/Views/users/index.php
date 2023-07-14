@@ -1,7 +1,10 @@
 <h2>User List</h2>
 
 <?= $title?>
+<br><br>
 
+ <a href="index.php?controller=user&action=create">Thêm mới </a>
+ <br><br>
 <table width='1200' border="1">
     <tr>
         <th>ID</th>
@@ -25,9 +28,10 @@
         <td><?=$user->avatar?></td>
         <td><?=$user->birthday?></td>
         <td><?=$user->gender == 1 ? 'Nam' : 'Nữ' ?></td>
-        <td><?=$user->family_id?></td>
+        <td><?="Gia đình số  $user->family_id"?></td>
         <td>
-            <a href="">Sửa</a> | <a href="">Xóa</a>
+            <a href="index.php?controller=user&action=edit&id=<?=$user->id?>">Sửa</a> |
+            <a onclick="return confirm('bạn có thực sự muốn xóa không?')" href="index.php?controller=user&action=delete">Xóa</a>
         </td>
     </tr>
 

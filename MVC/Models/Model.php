@@ -67,12 +67,26 @@ class Model
         $setValue = [];
 
         foreach ($inputs as $key => $value) {
-            $setValue[] = "{$key}'" . htmlentities($value) . "'";
+            $setValue[] = "{$key}='" . htmlentities($value) . "'";
         }
 
         $setValueString = implode(',', $setValue);
 
-        $sql = "UPDATE {$this->table} SET {$setValueString} WHERE id = $condition";
+        $sql = "UPDATE {$this->getTable()} SET {$setValueString} WHERE id = $condition";
+        
+        $this->query($sql);
+    }
+
+    public function findById($id)
+    {
+        $sql = "SELECT * FROM {$this->getTable()} WHERE id = $id";
+        $this->query($sql);
+        return $this->query->fetchObject();
+    }
+
+    public function deleteById($id)
+    {
+        $sql = "DELETE FROM {$this->getTable()} WHERE id = $id";
         $this->query($sql);
     }
 }
