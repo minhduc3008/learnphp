@@ -62,7 +62,7 @@ class EmployeeController
         view('employees.form', [
             'headingTitle' => 'Edit a Employee',
             'employee' => $employee,
-            'actionUrl' => 'index.php?controller=employees&action=update&id='.$employee->id,
+            'actionUrl' => 'index.php?controller=employee&action=update&id='.$employee->id,
         ]);
     }
 
@@ -71,9 +71,9 @@ class EmployeeController
         $inputs = $_POST;
         $employeeID = $_GET['id'] ?? 0;
 
-        $family = $this->model->findById($_GET['id'] ?? 0);
+        $employee = $this->model->findById($_GET['id'] ?? 0);
 
-        if (!$family) {
+        if (!$employee) {
             echo 'Employee not found';
             return;
         }
@@ -101,34 +101,39 @@ class EmployeeController
         ]);
     }
 
+    public function delete()
+    {
+        $this->model->deleteById($_GET['id'] ?? 0);
+        return redirect('index.php?controller=employee');
+    }
+
     public function validate()
     {
         $inputs = $_POST;
         $errorMessage = [];
-
         // Validate
         if (empty($inputs['name'])) {
-            $errorMessage['name'] = 'Name require';
+            $errorMessage['name'] = 'Vui lòng nhập tên của bạn';
         } 
 
         if (empty($inputs['phone'])) {
-            $errorMessage['phone'] = 'phone require';
+            $errorMessage['phone'] = 'Vui lòng nhập số điện thoại của bạn';
         }
 
         if (empty($inputs['email'])) {
-            $errorMessage['email'] = 'email require';
+            $errorMessage['email'] = 'Vui lòng nhập email của bạn';
         } 
 
         if (empty($inputs['address'])) {
-            $errorMessage['address'] = 'address require';
+            $errorMessage['address'] = 'Vui lòng nhập địa chỉ của bạn';
         }
 
         if (empty($inputs['birthday'])) {
-            $errorMessage['birthday'] = 'birthday require';
+            $errorMessage['birthday'] = 'Vui lòng nhập ngày sinh của bạn của bạn';
         }
 
         if (empty($inputs['gender'])) {
-            $errorMessage['gender'] = 'gender require';
+            $errorMessage['gender'] = 'Vui lòng chọn giới của bạn';
         }
 
         return $errorMessage;

@@ -1,57 +1,63 @@
-<h2>
-    <?= $headingTitle ?>
-</h2>
+<style>
+    span { 
+        color: red;
+    }
 </style>
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h3 class="display-5">User Information</h3>
-    <a href="index.php?controller=user">Back</a>
+<h3><?= $headingTitle ?></h3>
 
-</div>
 <div class="container">
-    <form action="index.php?controller=user&action=store" method="post" enctype="multipart/form-data">
-        <div class="form-group row">
-            <label for="fullname" class="col-sm-3 col-form-label">Full name</label>
-            <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Họ và tên" />
+    <form action="<?= $actionUrl ?>" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="personal_id" >CCCD</label>
+            <input type="text" id="personal_id" name="personal_id" value="<?= $user->personal_id ?? null ?>" placeholder="your cccd" />
+            <span><?= $errorMessage['personal_id'] ?? null ?></span> 
         </div>
+
+        <div class="form-group row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="<?= $user->name ?? null ?>" placeholder=" your name"/>
+            <span><?= $errorMessage['name'] ?? null ?></span> 
+        </div>
+
+        <div class="form-group row">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" value="<?= $user->email ?? null ?>" placeholder="your email" />
+            <span><?= $errorMessage['email'] ?? null ?></span>         
+        </div>
+
+        <div class="form-group row">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" value="<?= $user->password ?? null ?>" placeholder="your password" />
+            <span><?= $errorMessage['password'] ?? null ?></span>        
+        </div>
+
+        <div class="form-group row">
+    <label for="family_id">Gia đình</label>
+    <select id="family_id" name="family_id" class="form-control">
+        <option value="">-- Chọn gia đình --</option>
+        <option value="1" <?= isset($user->family_id) && $user->family_id == 1 ? 'selected' : '' ?>>Gia đình 1</option>
+        <option value="2" <?= isset($user->family_id) && $user->family_id == 2 ? 'selected' : '' ?>>Gia đình 2</option>
+        <option value="3" <?= isset($user->family_id) && $user->family_id == 3 ? 'selected' : '' ?>>Gia đình 3</option>
+    </select>
+    <span><?= $errorMessage['family_id'] ?? null ?></span>
 </div>
 
-<div class="form-group row">
-    <label for="email" class="col-sm-3 col-form-label">Email</label>
-    <input type="text" id="email" name="email" class="form-control" placeholder="Email của bạn" />
-</div>
-</div>
 
-<div class="form-group row">
-    <label for="phone" class="col-sm-3 col-form-label">Phone</label>
-    <input type="text" id="phone" name="phone" class="form-control" placeholder="phone của bạn" />
-</div>
-</div>
+        <div class="form-group row">
+            <label for="birthday">Birthday</label>
+            <input type="date" id="birthday" name="birthday" value="<?= $user->birthday ?? null ?>" placeholder="your birthday" />
+            <span><?= $errorMessage['birthday'] ?? null ?></span>         
+        </div>
 
-<div class="form-group row">
-    <label for="address" class="col-sm-3 col-form-label">Address</label>
+        <div class="form-group row">
+            <label for="gender">Gender</label>
+            <label><input type="radio" id="gender" name="gender" value="1" <?=isset($user->gender) && $user->gender == 1 ? 'checked' : null?>/>Nam</label>
+            <label><input type="radio" id="gender" name="gender" value="2" <?=isset($user->gender) && $user->gender == 2 ? 'checked' : null?>/>Nữ</label>
+            <span><?= $errorMessage['gender'] ?? null ?></span>        
+        </div>
 
-    <input type="text" id="address" name="address" class="form-control" placeholder="Địa chỉ của bạn" />
-</div>
-</div>
-
-<div class="form-group row">
-    <label for="gender" class="col-sm-3 col-form-label">Gender</label>
-
-    <label><input type="radio" id="male" name="gender" value="1" /> Nam</label>
-    <label><input type="radio" id="female" name="gender" value="2" /> Nữ</label>
-</div>
-</div>
-<div class="form-group row">
-    <label for="file" class="col-sm-3 col-form-label">Avatar</label>
-    <input type="file" id="file" name="file" class="form-control" />
-</div>
-</div>
-<div class="form-group row">
-    <label for="inputPassword" class="col-sm-3 col-form-label"></label>
-
-    <button type="submit" name="btn-submit" class="btn btn-primary">Save</button> &nbsp;
-    <button type="reset" class="btn btn-danger">Cancel</button>
-</div>
-</div>
-</form>
+        <div class="form-group row">
+           <button type="submit" name="btn-save">Save Employee</button>
+        </div>
+    </form>
 </div>

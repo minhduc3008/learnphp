@@ -2,7 +2,7 @@
 <a href="index.php?controller=employee&action=create">Create Employee</a>
 <br>
 <br>
-<table width='800' border="1">
+<table width='1200' border="1">
     <tr>
         <th>ID</th>
         <th>Name</th>

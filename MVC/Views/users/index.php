@@ -1,10 +1,7 @@
 <h2>User List</h2>
-
-<?= $title?>
-<br><br>
-
  <a href="index.php?controller=user&action=create">Thêm mới </a>
- <br><br>
+ <br>
+ <br>
 <table width='1200' border="1">
     <tr>
         <th>ID</th>
